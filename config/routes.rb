@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  namespace :api do
+    namespace :v1 do
+      # route api/v1/pokemon/25
+      get 'pokemon/:name', to: 'poke_api#get_pokemon'
+    end
+  end
 end
