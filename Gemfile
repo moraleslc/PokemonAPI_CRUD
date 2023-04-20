@@ -29,7 +29,6 @@ gem "jbuilder"
 
 # Implement gem poke-api-v2 
 gem "poke-api-v2"
-
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

@@ -1,0 +1,36 @@
+<h1>List of Pokemons</h1>
+
+<%= button_to "New Pokemon", new_pokemon_path, method: :get, class: "btn btn-primary", style: "font-size: 18px;" %>
+
+<br>
+
+<% if flash[:notice] %>
+  <div class="alert alert-success"><%= flash[:notice] %></div>
+<% end %>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Level</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @pokemons.each do |pokemon| %>
+      <tr>
+        <td><%= pokemon.name %></td>
+        <td><%= pokemon.pokemon_type %></td>
+        <td><%= pokemon.level %></td>
+        
+        <td>
+            <br>
+            <%= button_to "Show", pokemon_path(pokemon), method: :get, class: "show-button" %>
+            <%= button_to "Edit", edit_pokemon_path(pokemon), method: :get, class: "edit-button" %>
+            <%= button_to "Delete", pokemon_path(pokemon), method: :delete, data: { confirm: "Are you sure?" }, class: "delete-button" %>
+            <br>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
