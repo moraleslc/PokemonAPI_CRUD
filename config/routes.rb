@@ -6,8 +6,15 @@ Rails.application.routes.draw do
   get 'pokemons/edit'
   get 'pokemons/update'
   get '/pokemons', to: 'pokemons#index'
-  root 'pokemons#index'
-  resources :pokemons
+  root 'static_pages#home'
+
+  post "sign_up", to: "users#create"
+  get "sign_up", to: "users#new"
+  post "login", to: "sessions#destroy"
+  get "login", to: "sessions#new"
+  delete "logout", to: "sessions#destroy"
+
+  resources :confirmations, only: [:create, :edit, :new], param: :confirmation_token
   
   namespace :api do
     namespace :v1 do
